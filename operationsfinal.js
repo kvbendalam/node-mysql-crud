@@ -1,6 +1,9 @@
 const mysql = require('mysql2')
 const express = require('express')
 
+const { readEmployee } = require('./operations'); // Import the readEmployee function
+
+
 const app = express()
 
 app.use(express.json());
@@ -12,16 +15,16 @@ const connection = mysql.createPool({
     database: "school"
 }).promise()
 
-async function readEmployee() {
-    const query = "SELECT * FROM Employee";
-    try {
-        const [output] = await connection.query(query);
-        return output;
-    } catch (error) {
-        console.error(error);
-        throw error; // You might want to handle errors more gracefully in your application.
-    }
-}
+// async function readEmployee() {
+//     const query = "SELECT * FROM Employee";
+//     try {
+//         const [output] = await connection.query(query);
+//         return output;
+//     } catch (error) {
+//         console.error(error);
+//         throw error; // You might want to handle errors more gracefully in your application.
+//     }
+// }
 
 async function readEmployeeById(id) {
     const query = "SELECT * FROM Employee WHERE id = ?";

@@ -94,4 +94,6 @@ async function main() {
 
 }
 
-main(); // Call the async function to start the execution.
+// main(); // Call the async function to start the execution.
+
+module.exports = { readEmployee }
